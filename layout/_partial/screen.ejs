@@ -1,8 +1,7 @@
-<% var first = site.posts.sort("date", "desc").eq(0); %>
 <div id="screen">
     <div id="mark">
         <div class="layer" data-depth="0.4">
-            <%- image_tag(theme.welcome_cover || first.cover || "/img/welcome-cover.jpg", {id: "cover", crossorigin: "anonymous", width: 1920, height: 1080}) %>
+            <%- image_tag(theme.welcome_cover || "/img/welcome-cover.jpg", {id: "cover", crossorigin: "anonymous", width: 1920, height: 1080}) %>
         </div>
     </div>
     <div id="vibrant">
@@ -17,11 +16,8 @@
             <div class="icon-menu switchmenu"></div>
         </div>
     </div>
-    <% if ( first ) { %>
     <div id="post0">
-        <p><%- first.date.locale("zh-cn").format("MMMM DD, YYYY") %></p>
-        <h2><%- link_to(first.path, first.title || config.title, {class: "posttitle"}) %></h2>
-        <p class="summary"><%- truncate(strip_html(first.content), {length: 60, omission: '...'}) %></p>
+        <h1><%- link_to(config.url, config.title || config.title, {class: "posttitle"}) %></h1>
+        <p class="summary"><%- config.subtitle %></p>
     </div>
-    <% } %>
 </div>
